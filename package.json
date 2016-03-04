@@ -4,8 +4,7 @@
   "description": "API Client",
   "main": "index.html",
   "scripts": {
-    "start": "ws",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ws"
   },
   "author": "",
   "license": "ISC",
