@@ -1,24 +1,26 @@
+import debounce from 'lodash/debounce';
+import map from 'lodash/map';
+
 (function(appScope) {
 
-    var debounce = require('lodash/debounce');
-    var map      = require('lodash/map');
-    var db       = appScope.db;
+    const db = appScope.db;
 
-    var runApp = function() {
-        var $app =$('.app');
-        var $searchTermInput = $('.searchTermInput');
-        var $results = $('.results');
+    const runApp = () => {
+        const $app =$('.app');
+        const $searchTermInput = $('.searchTermInput');
+        const $results = $('.results');
 
-        var mostRecentSearchTerm = '';
+        let mostRecentSearchTerm = '';
 
-        $searchTermInput.on('keyup', debounce(function() {
-            var searchTerm = $searchTermInput.val().trim();
+        $searchTermInput.on('keyup', debounce(() => {
+            let searchTerm = $searchTermInput.val().trim();
 
             if (!searchTerm || searchTerm.length < 2 || searchTerm == mostRecentSearchTerm) {
                 return;
             }
 
             mostRecentSearchTerm = searchTerm;
+
             console.log('searching for term ' + searchTerm);
             $app.addClass('isSearching');
 
@@ -39,6 +41,6 @@
         }, 300));
     };
 
-    appScope.app = {run: runApp};
+    appScope.app = { run: runApp };
 
 }(window.__apiClient || (window.__apiClient = {})));
