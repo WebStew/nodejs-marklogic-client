@@ -10,7 +10,7 @@
         var mostRecentSearchTerm = '';
 
         $searchTermInput.on('keyup', _.debounce(function() {
-            var searchTerm = $searchTermInput.val();
+            var searchTerm = $searchTermInput.val().trim();
 
             if (!searchTerm || searchTerm.length < 2 || searchTerm == mostRecentSearchTerm) {
                 return;
