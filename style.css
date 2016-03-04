@@ -1,0 +1,40 @@
+.app {
+  padding: 10px;
+  font-family: Arial;
+}
+
+.searchTermInput {
+  width: 100%;
+  font-size: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.progressIndicator {
+  margin-top: 20px;
+  text-align: center;
+}
+.progressIndicator {
+  display: none;
+}
+.isSearching .progressIndicator {
+  display: block;
+}
+
+.results {
+  margin-top: 20px;
+}
+.results {
+  display: block;
+}
+.isSearching .results {
+  display: none;
+}
+
+.result {
+  margin-top: 10px;
+}
+
+.result:first-child {
+  margin-top: 0;
+}
