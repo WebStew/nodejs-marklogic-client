@@ -1,9 +1,12 @@
 (function(appScope) {
 
-    var resultIndex = 0;
+    var apiBaseUrl = 'http://localhost:3000/v0.0.1/';
 
     var searchDb = function(term) {
-        // TODO: Ajax call to shiny API: return $.ajax(...)
+        return $.ajax({
+            method: 'GET',
+            url: apiBaseUrl + 'search/' + term,
+        });
     };
 
     appScope.db = {search: searchDb};

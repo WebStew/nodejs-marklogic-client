@@ -7,24 +7,28 @@
         var $searchTermInput = $('.searchTermInput');
         var $results = $('.results');
 
+        var mostRecentSearchTerm = '';
+
         $searchTermInput.on('keyup', _.debounce(function() {
             var searchTerm = $searchTermInput.val();
 
-            if (!searchTerm || searchTerm.length < 2) {
+            if (!searchTerm || searchTerm.length < 2 || searchTerm == mostRecentSearchTerm) {
                 return;
             }
 
+            mostRecentSearchTerm = searchTerm;
             console.log('searching for term ' + searchTerm);
             $app.addClass('isSearching');
 
             db.search(searchTerm)
             .then(function(searchResults) {
                 $results.empty().append(_.map(searchResults, function(searchResult) {
-                    return $('<div>').text(searchResult.title);
+                    return $('<div class="result">').text(searchResult.title);
                 }));
             })
             .fail(function(error) {
                 console.log('An error occurred: ', error);
+                $results.empty();
             })
             .always(function(error) {
                 $app.removeClass('isSearching');
