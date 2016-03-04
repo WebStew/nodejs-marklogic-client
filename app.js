@@ -23,7 +23,7 @@
             db.search(searchTerm)
             .then(function(searchResults) {
                 $results.empty().append(_.map(searchResults, function(searchResult) {
-                    return $('<div class="result">').text(searchResult.title);
+                    return '<div class="result"><a href="http://onlinelibrary.wiley.com/enhanced/doi/' + searchResult.doi + '">' + searchResult.title + '</a></div>';
                 }));
             })
             .fail(function(error) {
