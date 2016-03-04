@@ -26,13 +26,13 @@ import map from 'lodash/map';
 
             db.search(searchTerm)
             .then(function(searchResults) {
-                $results.empty().append(map(searchResults, function(searchResult) {
-                    return '<div class="result"><a href="http://onlinelibrary.wiley.com/enhanced/doi/' + searchResult.doi + '">' + searchResult.title + '</a></div>';
+                $results.empty().append(_.map(searchResults, function(searchResult) {
+                    return '<div class="result"><a target="_blank" href="http://onlinelibrary.wiley.com/enhanced/doi/' + searchResult.doi + '">' + searchResult.title + '</a></div>';
                 }));
             })
             .fail(function(error) {
                 console.log('An error occurred: ', error);
-                $results.empty();
+                $results.empty().append('<div class="result">' + error.status + ' : ' + error.responseText + '</div>');
             })
             .always(function(error) {
                 $app.removeClass('isSearching');
