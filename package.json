@@ -4,11 +4,19 @@
   "description": "API Client",
   "main": "index.html",
   "scripts": {
-    "start": "ws"
+    "start": "ws",
+    "build": "webpack --progress --colors --config webpack.config"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "local-web-server": "^1.1.2"
+    "css-loader": "^0.23.1",
+    "local-web-server": "^1.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "lodash": "^4.6.1"
   }
 }
